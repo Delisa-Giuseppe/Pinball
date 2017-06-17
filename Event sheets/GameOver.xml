@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GameOver</name>
+    <events>
+        <event-block sid="126767390287608">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="648428398384776" type="System" />
+            </conditions>
+            <actions>
+                <action id="-28" name="Set canvas size" sid="178990426110441" type="System">
+                    <param id="0" name="Width">559</param>
+                    <param id="1" name="Height">308</param>
+                </action>
+                <action id="33" name="Stop all" sid="205227011384504" type="Audio" />
+                <action id="0" name="Play" sid="630849496652090" type="Audio">
+                    <param id="0" name="Audio file">110-pokemon-center</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="634091030462936">
+            <conditions>
+                <condition id="1" name="On any key pressed" sid="191357648051784" type="Keyboard" />
+            </conditions>
+            <actions>
+                <action id="-21" name="Reset global variables" sid="874989710152339" type="System" />
+                <action id="-2" name="Go to layout" sid="139625704080948" type="System">
+                    <param id="0" name="Layout">Menu</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

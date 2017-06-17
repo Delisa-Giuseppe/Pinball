@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Main</name>
+    <events>
+        <variable constant="0" name="Power" sid="747346635219834" static="0" type="number">0</variable>
+        <variable constant="0" name="Win" sid="455405446391047" static="0" type="number">0</variable>
+        <variable constant="0" name="DiglettOut" sid="929860958651461" static="0" type="number">0</variable>
+        <variable constant="0" name="Tries" sid="840561012777236" static="0" type="number">0</variable>
+        <variable constant="0" name="Pokeball" sid="736902929916196" static="0" type="number">3</variable>
+        <event-group description="" sid="881726080301600" title="PinballControls">
+            <sub-events>
+                <event-block sid="433931049195585">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="670364778238843" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Physics" id="3" name="Apply impulse" sid="793364961478451" type="PaddleLeft">
+                            <param id="0" name="Impulse X">0</param>
+                            <param id="1" name="Implulse Y">-10</param>
+                            <param id="2" name="Image point">2</param>
+                        </action>
+                        <action behavior="Physics" id="9" name="Set angular velocity" sid="512210705587931" type="PaddleLeft">
+                            <param id="0" name="Angular velocity">-750</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="964553656304346">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="444842166769834" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="838473124560575" type="Audio">
+                                    <param id="0" name="Audio file">Bumper6</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-5</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="174541715143559">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="460732791282872" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Physics" id="3" name="Apply impulse" sid="321779879979591" type="PaddleRight">
+                            <param id="0" name="Impulse X">0</param>
+                            <param id="1" name="Implulse Y">-10</param>
+                            <param id="2" name="Image point">2</param>
+                        </action>
+                        <action behavior="Physics" id="9" name="Set angular velocity" sid="195578199853189" type="PaddleRight">
+                            <param id="0" name="Angular velocity">750</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="188547432805141">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="174046200916865" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="658617171376697" type="Audio">
+                                    <param id="0" name="Audio file">Bumper6</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">-5</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="653643578387669">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="654919666228402" type="Keyboard">
+                            <param id="0" name="Key">32 (Barra Spaziatrice)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Physics" id="21" name="Set immovable" sid="533118464123383" type="Spoink">
+                            <param id="0" name="Setting">0</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="984819453338609" type="System">
+                            <param id="0" name="Variable">Power</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="456537082542378">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="961530298642885" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="206321070519005" type="Spoink">
+                                    <param id="0" name="Animation">&quot;Down&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="935022077916853">
+                    <conditions>
+                        <condition id="3" name="On key released" sid="677829155467416" type="Keyboard">
+                            <param id="0" name="Key">32 (Barra Spaziatrice)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="124799959789954" type="Spoink">
+                            <param id="0" name="Animation">&quot;Up&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="0" name="Play" sid="460027981345366" type="Audio">
+                            <param id="0" name="Audio file">Jump-SoundBible_com-1007297584</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action behavior="Timer" id="0" name="Start timer" sid="926680458700744" type="BallBouncer">
+                            <param id="0" name="Duration">5.0</param>
+                            <param id="1" name="Type">1</param>
+                            <param id="2" name="Tag">&quot;ChangeElement&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="704484966190398">
+                            <conditions />
+                            <actions />
+                        </event-block>
+                        <event-block sid="741086609279332">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="180598723384960" type="System">
+                                    <param id="0" name="First value">Power</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Second value">150</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="933892207840358" type="System">
+                                    <param id="0" name="Variable">Power</param>
+                                    <param id="1" name="Value">150</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="552884921958948">
+                            <conditions />
+                            <actions>
+                                <action behavior="Physics" id="3" name="Apply impulse" sid="737385616472692" type="Spoink">
+                                    <param id="0" name="Impulse X">0</param>
+                                    <param id="1" name="Implulse Y">-Power</param>
+                                    <param id="2" name="Image point">1</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="893022286774037" type="System">
+                                    <param id="0" name="Seconds">0.2</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="559454521297715" type="Spoink">
+                                    <param id="0" name="X">Spoink.posX</param>
+                                    <param id="1" name="Y">Spoink.posY</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="625741272737129" type="System">
+                                    <param id="0" name="Seconds">0.2</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="686184990703884" type="System">
+                                    <param id="0" name="Variable">Power</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action behavior="Physics" id="21" name="Set immovable" sid="612069873043084" type="Spoink">
+                                    <param id="0" name="Setting">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="291971856903116" title="PokemonBehavior">
+            <sub-events>
+                <event-block sid="978940764073009">
+                    <conditions>
+                        <condition behavior="Flash" id="0" name="Is flashing" sid="276821054816333" type="Pokemon" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="564736325530942" type="System">
+                            <param id="0" name="Seconds">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="774264341225093" type="Flames">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="588762697553483" type="Water">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="380437917718436" type="Leaf">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="112878114510200">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="986910285786328" type="Snorlax">
+                            <param id="0" name="Object">Ball</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="575638229325410" type="Snorlax">
+                            <param id="0" name="Animation">&quot;Bounce&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="0" name="Play" sid="795652478334839" type="Audio">
+                            <param id="0" name="Audio file">290-snorlax</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="674728720088836">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="935405591079235" type="Ball">
+                            <param id="0" name="Object">Mewtwo</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="158032514026120">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="879311024032231" type="Mewtwo">
+                                    <param id="0" name="Unique ID">Mewtwo.UID</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Pin" id="0" name="Pin to object" sid="531286750807005" type="Ball">
+                                    <param id="0" name="Pin to">Mewtwo</param>
+                                    <param id="1" name="Mode">0</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="627816549939942" type="Mewtwo">
+                                    <param id="0" name="Animation">&quot;Bounce&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="0" name="Play" sid="497322907794664" type="Audio">
+                                    <param id="0" name="Audio file">297-mewto</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="393952838267297">
+                    <conditions>
+                        <condition id="4" name="On finished" sid="492522410730265" type="Mewtwo">
+                            <param id="0" name="Animation">&quot;Bounce&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Pin" id="1" name="Unpin" sid="761213589709001" type="Ball" />
+                        <action behavior="Physics" id="3" name="Apply impulse" sid="860488847507526" type="Ball">
+                            <param id="0" name="Impulse X">round(random(-5,5))</param>
+                            <param id="1" name="Implulse Y">-20</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="707025114547742">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="441762548991225" type="Ball">
+                            <param id="0" name="Object">Diglett</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="996867618451044" type="System">
+                            <param id="0" name="Variable">DiglettOut</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Play" sid="434617759185460" type="Audio">
+                            <param id="0" name="Audio file">195-diglett</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="907373757304749">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="253257955164731" type="System">
+                            <param id="0" name="Variable">DiglettOut</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="591851326145522" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="107044455895098">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="101644472869103" type="System">
+                                    <param id="0" name="Object">Diglett</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="442638181905970" type="Diglett">
+                                    <param id="0" name="Animation">&quot;Bounce&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="710442765653109" type="System">
+                                    <param id="0" name="Seconds">0.3</param>
+                                </action>
+                                <action behavior="Physics" id="27" name="Set enabled" sid="467295563253308" type="Diglett">
+                                    <param id="0" name="Mode">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="592987456514292" title="PinballCore">
+            <sub-events>
+                <event-block sid="134573209519356">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="131310116186758" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="33" name="Stop all" sid="364608968042829" type="Audio" />
+                        <action behavior="Physics" id="22" name="Create limited revolute joint" sid="983636500141350" type="PaddleRight">
+                            <param id="0" name="This image point">1</param>
+                            <param id="1" name="Object">Anchor</param>
+                            <param id="2" name="Lower angle">-55</param>
+                            <param id="3" name="Upper angle">0</param>
+                        </action>
+                        <action behavior="Physics" id="22" name="Create limited revolute joint" sid="258028228286716" type="PaddleLeft">
+                            <param id="0" name="This image point">1</param>
+                            <param id="1" name="Object">Anchor2</param>
+                            <param id="2" name="Lower angle">0</param>
+                            <param id="3" name="Upper angle">55</param>
+                        </action>
+                        <action behavior="Physics" id="12" name="Set world gravity" sid="692716215856432" type="Ball">
+                            <param id="0" name="Gravity">10</param>
+                        </action>
+                        <action behavior="Physics" id="23" name="Enable/disable collisions" sid="512577766176261" type="Ball">
+                            <param id="0" name="Object">Border</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="347915603264701" type="Spoink">
+                            <param id="0" name="Instance variable">posX</param>
+                            <param id="1" name="Value">Self.ImagePointX(0)</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="158286911510069" type="Spoink">
+                            <param id="0" name="Instance variable">posY</param>
+                            <param id="1" name="Value">Self.ImagePointY(0)</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="906528048654824" type="Flames">
+                            <param id="0" name="Object">Pokemon</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="993439788021983" type="Water">
+                            <param id="0" name="Object">Pokemon</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action id="-4" name="Set position to another object" sid="218208940216227" type="Leaf">
+                            <param id="0" name="Object">Pokemon</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action id="-27" name="Set effect enabled" sid="691451633488960" type="BallBouncer">
+                            <param id="0" name="Mode">0</param>
+                            <param id="1" name="Effect">&quot;Pulse&quot;</param>
+                        </action>
+                        <action id="-28" name="Set canvas size" sid="630339622398463" type="System">
+                            <param id="0" name="Width">1354</param>
+                            <param id="1" name="Height">1360</param>
+                        </action>
+                        <action id="33" name="Stop all" sid="913415678499992" type="Audio" />
+                        <action id="0" name="Play" sid="505508702436770" type="Audio">
+                            <param id="0" name="Audio file">107-battle-vs-wild-pokemon-</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">-7</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="345885163787966">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="395970303824377" type="System">
+                                    <param id="0" name="Object">BallBouncer</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="337473079084463" type="System">
+                                    <param id="0" name="Object to create">Snorlax</param>
+                                    <param id="1" name="Layer">&quot;Level&quot;</param>
+                                    <param id="2" name="X">BallBouncer.X</param>
+                                    <param id="3" name="Y">BallBouncer.Y - 150</param>
+                                </action>
+                                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="665291559343483" type="Snorlax">
+                                    <param id="0" name="Object">Immovable</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="286733570178429" type="Snorlax">
+                                    <param id="0" name="Object">Snorlax</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action behavior="Physics" id="23" name="Enable/disable collisions" sid="946267662079550" type="Snorlax">
+                                    <param id="0" name="Object">BallBouncer</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action behavior="Physics" id="10" name="Create distance joint" sid="799771185121109" type="Snorlax">
+                                    <param id="0" name="This image point">0</param>
+                                    <param id="1" name="Object">BallBouncer</param>
+                                    <param id="2" name="That image point">0</param>
+                                    <param id="3" name="Damping ratio">0</param>
+                                    <param id="4" name="Spring frequency">20</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="490058325046720">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="498440137606695" type="System" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Physics" id="3" name="Apply impulse" sid="924415153021203" type="PaddleRight">
+                            <param id="0" name="Impulse X">0</param>
+                            <param id="1" name="Implulse Y">2</param>
+                            <param id="2" name="Image point">2</param>
+                        </action>
+                        <action behavior="Physics" id="3" name="Apply impulse" sid="807068328680720" type="PaddleLeft">
+                            <param id="0" name="Impulse X">0</param>
+                            <param id="1" name="Implulse Y">2</param>
+                            <param id="2" name="Image point">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="209963626795794">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="540843543582106" type="Ball">
+                            <param id="0" name="Object">BallBouncer</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="650912301230742" type="Audio">
+                            <param id="0" name="Audio file">Bumper14</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action behavior="Flash" id="0" name="Flash" sid="679465190215986" type="Pokemon">
+                            <param id="0" name="&apos;On&apos; time">0.1</param>
+                            <param id="1" name="&apos;Off&apos; time">0.1</param>
+                            <param id="2" name="Duration">1.0</param>
+                        </action>
+                        <action id="-27" name="Set effect enabled" sid="184092137524442" type="BallBouncer">
+                            <param id="0" name="Mode">1</param>
+                            <param id="1" name="Effect">&quot;Pulse&quot;</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="651336562754699" type="System">
+                            <param id="0" name="Seconds">0.2</param>
+                        </action>
+                        <action id="-27" name="Set effect enabled" sid="697801024258830" type="BallBouncer">
+                            <param id="0" name="Mode">0</param>
+                            <param id="1" name="Effect">&quot;Pulse&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="642782752172537">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="177787135173088" type="BallBouncer">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Fire&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="884037690230818" type="Flames">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="374813587288493" type="Trainer">
+                                    <param id="0" name="X">Self.X - 200</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="670095327818705">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="552608913661135" type="BallBouncer">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Water&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="148238022741452" type="Water">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="595250142129158" type="Trainer">
+                                    <param id="0" name="X">Self.X - 50</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="653268486626408">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="135983726248812" type="BallBouncer">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Grass&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="478403833808231" type="Leaf">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="670873705944605" type="Trainer">
+                                    <param id="0" name="X">Self.X - 100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="609688425252937">
+                    <conditions>
+                        <condition behavior="Timer" id="0" name="On timer" sid="486314892318855" type="BallBouncer">
+                            <param id="0" name="Tag">&quot;ChangeElement&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="834251286194067" type="BallBouncer">
+                            <param id="0" name="Animation">choose(&quot;Fire&quot;,&quot;Grass&quot;,&quot;Water&quot;)</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="320051198455061" type="BallBouncer">
+                            <param id="0" name="Instance variable">Type</param>
+                            <param id="1" name="Value">BallBouncer.AnimationName</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="540715192716591">
+                    <conditions>
+                        <condition id="-19" name="On destroyed" sid="821822080699503" type="Ball" />
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="627775751266961" type="System">
+                            <param id="0" name="Variable">Pokeball</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="565479786462281" type="System">
+                            <param id="0" name="Variable">Tries</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="529336698802151" type="Diglett">
+                            <param id="0" name="Animation">&quot;Stand&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="Physics" id="27" name="Set enabled" sid="915977076651701" type="Diglett">
+                            <param id="0" name="Mode">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="428089562117675" type="System">
+                            <param id="0" name="Variable">DiglettOut</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="381440633072593">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="141284770163829" type="System">
+                                    <param id="0" name="Variable">Win</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="603751464411543" type="Audio">
+                                    <param id="0" name="Audio file">122-jigglypuff-s-song</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="448435674609851">
+                            <conditions>
+                                <condition id="-21" name="Is between values" sid="596435592685543" type="System">
+                                    <param id="0" name="Value">Pokeball</param>
+                                    <param id="1" name="Lower bound">1</param>
+                                    <param id="2" name="Upper bound">3</param>
+                                </condition>
+                                <condition id="-4" name="Trigger once while true" sid="900681054884441" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Wait" sid="832767820683787" type="System">
+                                    <param id="0" name="Seconds">5.0</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="227181522528033" type="System">
+                                    <param id="0" name="Object to create">Ball</param>
+                                    <param id="1" name="Layer">&quot;Level&quot;</param>
+                                    <param id="2" name="X">899</param>
+                                    <param id="3" name="Y">1211</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="631338809758533">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="338070107170080" type="System">
+                            <param id="0" name="Variable">Pokeball</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="491179446492946">
+                            <conditions>
+                                <condition id="-10" name="For" sid="917352271821643" type="System">
+                                    <param id="0" name="Name">&quot;DeleteBall&quot;</param>
+                                    <param id="1" name="Start index">1</param>
+                                    <param id="2" name="End index">Tries</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="527877429935255">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="605583746539808" type="Ball">
+                                            <param id="0" name="Instance variable">ID</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">loopindex(&quot;DeleteBall&quot;)</param>
+                                        </condition>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="621682838955935" type="Ball">
+                                            <param id="0" name="Instance variable">HUD</param>
+                                        </condition>
+                                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="703143212101018" type="Ball">
+                                            <param id="0" name="Instance variable">Delete</param>
+                                        </condition>
+                                        <condition id="-4" name="Trigger once while true" sid="710016642662916" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="611716750317120" type="Ball">
+                                            <param id="0" name="Animation">&quot;Delete&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                        <action id="-13" name="Set boolean" sid="564454942757125" type="Ball">
+                                            <param id="0" name="Instance variable">Delete</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="497326171877859">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="531176343939548" type="System">
+                            <param id="0" name="Variable">Pokeball</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="348163156447946" type="System">
+                            <param id="0" name="Variable">Win</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="341995073656530" type="System">
+                            <param id="0" name="Seconds">1</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="225153925290170" type="System">
+                            <param id="0" name="Layout">GameOver</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="674856105966687" title="PinballWin">
+            <sub-events>
+                <event-block sid="653856225672632">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="505593936430657" type="System">
+                            <param id="0" name="First value">round(distance(Pokemon.X, Pokemon.Y, Trainer.X, Trainer.Y))</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="858202400057503" type="Catch">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="280711536644881" type="Catch">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="801695057076695" type="Ball" />
+                        <action id="-9" name="Set value" sid="758726728447024" type="System">
+                            <param id="0" name="Variable">Win</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="344985501945011">
+                    <conditions>
+                        <condition id="4" name="On finished" sid="793303227079143" type="Catch">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="619086568950326" type="System">
+                            <param id="0" name="Variable">Win</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="797342064335052" type="Em">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="493637848398922" type="Em">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="364115126911410">
+                    <conditions>
+                        <condition id="4" name="On finished" sid="713498772849078" type="Em">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="988457810301162" type="System">
+                            <param id="0" name="Variable">Win</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="379741903389943" type="All">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="128880243291541" type="All">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="691020683304899">
+                    <conditions>
+                        <condition id="4" name="On finished" sid="384285977214281" type="All">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="818752595057253" type="System">
+                            <param id="0" name="Variable">Win</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Stop" sid="864458640740157" type="All" />
+                        <action id="-9" name="Destroy" sid="274880580024963" type="Pokemon" />
+                        <action id="-16" name="Wait" sid="438877474487366" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="907219906905179" type="System">
+                            <param id="0" name="Layout">Win</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
